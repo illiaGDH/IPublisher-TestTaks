@@ -23,7 +23,14 @@
           </a>
           <mat-divider></mat-divider>
 
+          <a fxFlex="none" mat-list-item class="white-color" routerLink="/transport-status" (click)="drawer.toggle()" >
+            <p mat-line class="name">Статуси Транспорту</p>
+            <fa-icon style="color: white" [icon]="faChevronRight"></fa-icon>
+          </a>
+          <mat-divider></mat-divider>
+
         </mat-nav-list>
+
       </div>
 
   </mat-sidenav>
