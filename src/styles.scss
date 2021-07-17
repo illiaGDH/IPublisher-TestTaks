@@ -6,3 +6,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .icon {
   font-size: 1.5em;
 }
+
+.search {
+  &__icon {
+    margin-right: 10px;
+  }
+}

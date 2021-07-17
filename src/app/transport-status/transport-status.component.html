@@ -1,1 +1,42 @@
-<p>transport-status works!</p>
+<div class="transport-status">
+  <div class="transport-status__options">
+    <mat-form-field class="transport-status__option">
+      <mat-label>Організація</mat-label>
+      <mat-select>
+        <mat-option [value]="null">-- Усі --</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-form-field class="transport-status__option">
+      <mat-label>Департамент</mat-label>
+      <mat-select>
+        <mat-option [value]="null">-- Усі --</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-form-field class="transport-status__option">
+      <mat-label>Контрагент</mat-label>
+      <mat-select>
+        <mat-option [value]="null">-- Усі --</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-form-field class="transport-status__option">
+      <input #search matInput placeholder="Пошук"/>
+  
+      <mat-icon matPrefix class="search__icon">search</mat-icon>  
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-paginator fxFlex="none" [pageSizeOptions]="[10, 25, 100]" [pageSize]="25"></mat-paginator>
+  </div>
+</div>
+
+<div >
+  <table >
+
+   
+  </table>
+</div>
+

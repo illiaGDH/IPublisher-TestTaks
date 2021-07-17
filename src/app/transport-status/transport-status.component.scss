@@ -1,0 +1,38 @@
+.transport-status {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  &__options {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    justify-content: flex-start;
+
+    padding: 5px 15px;
+  }
+
+  &__option {
+    margin-right: 15px;
+    max-width: 300px;
+    width: 100%;
+  }
+
+  @media (max-width: 1200px) {
+    flex-direction: column;
+    border: 1px solid blue;
+
+    &__options {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+    } 
+    &__option {
+      margin: 0 5px;
+
+      &:last-child {
+        order: -1;
+      }
+    }
+  }
+}
+
