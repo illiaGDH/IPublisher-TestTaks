@@ -17,4 +17,11 @@ export class TransportStatusStore extends ComponentStore<TransportStatusState> {
       contragentId: null
     });
   }
+
+  readonly vehicleCodes$ = this.select(state => state.vehicleCodes);
+  readonly organizationId$ = this.select(state => state.organizationId);
+  readonly departmentId$ = this.select(state => state.departmentId);
+  readonly contragentId$ = this.select(state => state.contragentId);
 }
+
+  

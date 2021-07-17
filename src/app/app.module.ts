@@ -15,6 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 import { MatSelectModule } from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
@@ -38,6 +39,7 @@ import { TransportStatusComponent } from './transport-status/transport-status.co
     BrowserAnimationsModule,
     LayoutModule,
     MatTableModule,
+    MatSortModule,
     MatSelectModule,
     MatPaginatorModule,
     MatToolbarModule,
