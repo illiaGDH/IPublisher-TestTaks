@@ -3,7 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Observable } from 'rxjs';
+import { asapScheduler, Observable } from 'rxjs';
 import { delay, tap } from 'rxjs/operators';
 import { VehicleCode } from '../shared/interface';
 import { TransportStatusStore } from './transport-status.store';
@@ -40,8 +40,10 @@ export class TransportStatusComponent implements OnInit {
     'drivers',
   ];
 
+  readonly trackById = <T extends { id: string }>(index: number, item: T): any => item.id ?? index;
+
   private tableRows$: Observable<TableRow[]> = this.store.select(
-    this.store.vehicleCodes$,
+    this.store.vehicleCodesFilteredByContragent$,
     codes => codes.map(vehicleCode => ({
       vehicle: vehicleCode.Vehicle?.name,
       organization: vehicleCode.Vehicle?.Organization?.name,
@@ -54,23 +56,26 @@ export class TransportStatusComponent implements OnInit {
   );
 
   constructor(
-    private readonly store: TransportStatusStore,
+    readonly store: TransportStatusStore,
     private readonly http: HttpClient
   ) { }
 
   ngOnInit(): void {
     
     this.http.get<VehicleCode[]>('./assets/data.json').pipe(
-      delay(1000),
+      delay(500),
       tap(vehicleCodes => this.store.setState(state => ({ ...state, vehicleCodes })))
     ).subscribe();
-
-    this.tableRows$.subscribe(v => this.dataSource.data = v);
   }
 
   ngAfterViewInit(): void {
+    asapScheduler.schedule(() => this.tableRows$.subscribe(v => this.dataSource.data = v));
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
 
+  search(enteredValue: string): void {
+    this.dataSource.filter = enteredValue.trim().toLowerCase();
+    this.dataSource.paginator.firstPage();
+  }
 }

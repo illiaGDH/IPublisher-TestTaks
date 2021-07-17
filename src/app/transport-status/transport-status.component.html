@@ -3,27 +3,30 @@
     <div class="transport-status__options">
       <mat-form-field class="transport-status__option">
         <mat-label>Організація</mat-label>
-        <mat-select>
+        <mat-select (selectionChange)="store.setOrganizationId($event.value);">
           <mat-option [value]="null">Усі</mat-option>
+          <mat-option *ngFor="let organization of store.organizations$ | async; trackBy: trackById" [value]="organization.id">{{ organization.name }}</mat-option>
         </mat-select>
       </mat-form-field>
     
       <mat-form-field class="transport-status__option">
         <mat-label>Департамент</mat-label>
-        <mat-select>
+        <mat-select (selectionChange)="store.setDepartmentId($event.value)">
           <mat-option [value]="null">Усі</mat-option>
+          <mat-option *ngFor="let department of store.departments$ | async; trackBy: trackById" [value]="department.id">{{ department.name }}</mat-option>
         </mat-select>
       </mat-form-field>
     
       <mat-form-field class="transport-status__option">
         <mat-label>Контрагент</mat-label>
-        <mat-select>
+        <mat-select (selectionChange)="store.setContragentId($event.value)">
           <mat-option [value]="null">Усі</mat-option>
+          <mat-option *ngFor="let contragent of store.contragents$ | async; trackBy: trackById" [value]="contragent.id">{{ contragent.name }}</mat-option>
         </mat-select>
       </mat-form-field>
     
       <mat-form-field class="transport-status__option">
-        <input #search matInput placeholder="Пошук"/>
+        <input #searchInput matInput placeholder="Пошук" (input)="search(searchInput.value)"/>
     
         <mat-icon matPrefix class="search__icon">search</mat-icon>  
       </mat-form-field>

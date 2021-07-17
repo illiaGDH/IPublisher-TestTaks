@@ -25,6 +25,8 @@
   &__main {
     background: #fff;
     box-shadow: 0 0 3px 4px rgba(196, 195, 195, 0.253);
+    max-width: 100%;
+    overflow-x: scroll;
   }
 
   &__table {
